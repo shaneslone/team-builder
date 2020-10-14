@@ -1,7 +1,7 @@
 import React from 'react'
 
 export default function Form(props) {
-    const { values, update, submit } = props;
+    const { values, update, submit, memberToEdit } = props;
 
     const onChange = (evt) => {
         const { name, value } = evt.target;
@@ -22,7 +22,7 @@ export default function Form(props) {
                     type='text'
                     name='name'
                     onChange={onChange}
-                    value={values.name}
+                    value={memberToEdit ? memberToEdit.name: values.name}
                     placeholder='Enter Your Name'
                     maxLength='30'
                 />
@@ -33,14 +33,14 @@ export default function Form(props) {
                     type='email'
                     name='email'
                     onChange={onChange}
-                    value={values.email}
+                    value={memberToEdit ? memberToEdit.email: values.email}
                     placeholder='Enter Your Email'
                     maxLength='50'
                 />
                 </label>
                 <label>
                     Role:
-                    <select name='role' value={values.role} onChange={onChange}>
+                    <select name='role' value={memberToEdit ? memberToEdit.role: values.role} onChange={onChange}>
                         <option value="">---select role---</option>
                         <option value="student">Student</option>
                         <option value="instructor">Instructor</option>
